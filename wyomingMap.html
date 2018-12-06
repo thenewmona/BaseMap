@@ -1,0 +1,97 @@
+<!-- Brad Traversy https://www.youtube.com/watch?v=Zxf1mnP5zcw -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Udacity Neighborhood Map Project</title>
+    <style>
+    #map {
+        height:100vh;/*per Asmaa from Slack*/
+        width:100%;
+    }
+    </style>
+    
+</head>
+
+<body>
+        <h1>SaintAndre's Races 2018</h1>   
+            
+    <div id="map"></div>
+    <script>    
+//map specifications
+            function initMap() {
+                let specs = {
+                    zoom: 8,
+                    center: {lat: 42.9134, lng: -85.7053},//my city wyoming, mi
+                }
+                //new map
+                let map = new google.maps.Map(document.getElementById('map'),specs);
+
+//Marker Array 
+//adding the cordinates to create a prop, so we can have multiple location markers 
+let markers = [
+{
+    cordinates:{lat:42.8946,lng:-85.6622},
+iconImage:'https://img.icons8.com/material-rounded/2x/street-view.png',
+content:'<h1> Home </h1>'
+},
+{//snowman 10k
+    cordinates:{lat:43.582016,lng:-84.7706},
+iconImage:'https://img.icons8.com/color/2x/track-and-field.png',
+content:'<h1>Snowman 10k</h1>'
+},
+{//snowman 10k
+    cordinates:{lat:43.582016,lng:-84.7706},
+iconImage:'https://img.icons8.com/color/2x/track-and-field.png',
+content:'<h1>Snowman 10k</h1>'
+},
+];
+
+//loop through markers
+
+for(let i = 0;i < markers.length;i++){
+    addMarker (markers[i]);
+}
+
+// icons 
+//https://img.icons8.com/color/2x/exercise.png
+//https://img.icons8.com/color/2x/track-and-field.png
+//https://img.icons8.com/color/2x/filled-like.png
+//marker function
+function addMarker(props){
+    var marker = new google.maps.Marker({
+        position:props.cordinates,
+        map:map,
+        icon:props.iconImage
+});
+
+//checking for icon
+if(props.iconImage){
+    //setting icon
+    marker.setIcon(props.iconImage);
+}
+//checking for content 
+
+if (props.content){
+    let infoWindow = new google.maps.InfoWindow({
+          content:props.content
+      }) ;
+      marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+      })   ;  
+}
+
+                   }
+                          }     
+                           
+            
+          </script>
+           </script>
+           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHXusII93lnI3Q-k9YkrVl6hAnIdYFMnQ&callback=initMap"
+           async defer></script>
+    
+</body>
+</html>
