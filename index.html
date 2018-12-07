@@ -32,23 +32,25 @@
     
 //Marker Array 
 //adding the cordinates to create a prop, so we can have multiple location markers 
-let markers = [
+let markers = [//need to work on marker clustering here 
 {
     cordinates:{lat:42.8946,lng:-85.6622},
 iconImage:'https://img.icons8.com/material-rounded/2x/street-view.png',
-content:'<h1> Home </h1>'
+content:'<h1> Home </h1>',
+label:'This is where we start from',
 },
 {//snowman 10k
     cordinates:{lat:43.582016,lng:-84.7706},
-iconImage:'/marker images/icecub.jpg',
-content:'<h1>IceCube 10k</h1>',
+iconImage:'/marker images/snowman.jpg',
+content:'<h1>Snowman 10k</h1>',
+label:'off road race',
 
 },
 {//snowman 10k
     cordinates:{lat:43.582016,lng:-84.7706},
 iconImage:'https://img.icons8.com/color/2x/track-and-field.png',
-content:'<h1>Snowman 10k</h1>'
-
+content:'<h1>IceCube 10k</h1>',
+label:'off road race',
 },
 ];
 
@@ -92,7 +94,8 @@ if(props.iconImage){
 
 if (props.content){
     let infoWindow = new google.maps.InfoWindow({
-          content:props.content
+          content:props.content,
+          label:props.label,
       }) ;
       marker.addListener('click',function(){
           infoWindow.open(map,marker);
