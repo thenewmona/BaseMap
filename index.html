@@ -29,7 +29,7 @@
                 }
                 //new map
                 let map = new google.maps.Map(document.getElementById('map'),specs);
-
+    
 //Marker Array 
 //adding the cordinates to create a prop, so we can have multiple location markers 
 let markers = [
@@ -40,13 +40,15 @@ content:'<h1> Home </h1>'
 },
 {//snowman 10k
     cordinates:{lat:43.582016,lng:-84.7706},
-iconImage:'https://img.icons8.com/color/2x/track-and-field.png',
-content:'<h1>Snowman 10k</h1>'
+iconImage:'/marker images/icecub.jpg',
+content:'<h1>IceCube 10k</h1>',
+
 },
 {//snowman 10k
     cordinates:{lat:43.582016,lng:-84.7706},
 iconImage:'https://img.icons8.com/color/2x/track-and-field.png',
 content:'<h1>Snowman 10k</h1>'
+
 },
 ];
 
@@ -61,12 +63,25 @@ for(let i = 0;i < markers.length;i++){
 //https://img.icons8.com/color/2x/track-and-field.png
 //https://img.icons8.com/color/2x/filled-like.png
 //marker function
-function addMarker(props){
-    var marker = new google.maps.Marker({
+function addMarker(props){//marker component
+    let marker = new google.maps.Marker({
         position:props.cordinates,
         map:map,
-        icon:props.iconImage
+        icon:props.iconImage,
+      
+        // animation:google.maps.Animation.Drop,
 });
+
+// marker.addListener('click',toggleBounce);
+// }
+
+// function toggleBounce(){//https://developers.google.com/maps/documentation/javascript/markers
+//     if (marker.getAnimation() !== null){
+//         marker.setAnimation(null);
+//     }else{
+//         marker.setAnimation(google.maps.Animation.BOUNCE);
+//     }
+// }
 
 //checking for icon
 if(props.iconImage){
