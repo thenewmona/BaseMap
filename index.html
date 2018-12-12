@@ -31,7 +31,9 @@
                 let map = new google.maps.Map(document.getElementById('map'),specs);
     
 //Marker Array 
-//adding the cordinates to create a prop, so we can have multiple location markers 
+//adding the cordinates to create a prop, so we can have multiple location markers
+//need to create a class so that I can manipulate the images via css 
+ 
 let markers = [//need to work on marker clustering here 
 {
     cordinates:{lat:42.8946,lng:-85.6622},
@@ -220,12 +222,7 @@ iconImage:'https://img.icons8.com/material-rounded/2x/street-view.png',
 content:'<h3> Dirty Duel </h3>',
 label:'Trail Run',
 },
-{
-    cordinates:{lat:42.8946,lng:-85.6622},
-iconImage:'https://img.icons8.com/material-rounded/2x/street-view.png',
-content:'<h1> Home </h1>',
-label:'This is where we start from',
-},
+
 ];
 
 //loop through markers
